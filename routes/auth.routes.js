@@ -11,7 +11,7 @@ const saltRounds = 10;
 const User = require("../models/User.model");
 
 // require (import) middleware functions
-const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard");
 
 ////////////////////////////////////////////////////////////////////////
 ///////////////////////////// SIGNUP //////////////////////////////////
@@ -93,11 +93,14 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     .then((user) => {
       if (!user) {
         res.render("auth/login", { errorMessage: "Email is not registered. Try with other email." });
+        console.log(1)
         return;
       } else if (bcryptjs.compareSync(password, user.passwordHash)) {
         req.session.user = user;
+        console.log(2)
         res.redirect("/user-profile");
       } else {
+        console.log(3)
         res.render("auth/login", { errorMessage: "Incorrect password." });
       }
     })
