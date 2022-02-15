@@ -25,7 +25,7 @@ const userSchema = new Schema(
     },
     imgUrl: {
       type: String,
-      default: "https://cdn-icons-png.flaticon.com/512/456/456212.png" 
+      default: "/images/cat-3.png" 
     },
   },
   {
