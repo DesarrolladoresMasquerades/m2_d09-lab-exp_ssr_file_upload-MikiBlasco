@@ -29,6 +29,13 @@ app.use('/', (req, res, next) => {
   next()
 })
 
+
+const postRoutes = require('./routes/private/post.routes')
+app.use('/post',postRoutes)
+
+const profileRoutes = require('./routes/private/personal.routes');
+app.use('/user-profile', profileRoutes);
+
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
